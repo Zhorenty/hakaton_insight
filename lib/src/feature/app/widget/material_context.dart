@@ -28,7 +28,7 @@ class MaterialContext extends StatelessWidget {
       localizationsDelegates: Localization.localizationDelegates,
       supportedLocales: Localization.supportedLocales,
       locale: locale,
-      home: const HomeScreen(),
+      home: const HomePage(),
       // TODO: You may want to override the default text scaling behavior.
       builder: (context, child) => MediaQuery.withClampedTextScaling(
         key: _globalKey,
