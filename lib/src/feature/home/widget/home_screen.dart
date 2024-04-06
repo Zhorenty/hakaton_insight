@@ -32,7 +32,9 @@ class _HomePageState extends State<HomePage> {
         bottomNavigationBar: DecoratedBox(
           decoration: const BoxDecoration(
             borderRadius: BorderRadius.only(
-                topRight: Radius.circular(30), topLeft: Radius.circular(30),),
+              topRight: Radius.circular(30),
+              topLeft: Radius.circular(30),
+            ),
             boxShadow: [
               BoxShadow(color: Colors.black38, blurRadius: 10),
             ],
@@ -46,7 +48,7 @@ class _HomePageState extends State<HomePage> {
               selectedFontSize: 20,
               showSelectedLabels: false,
               showUnselectedLabels: false,
-              selectedIconTheme: const IconThemeData(color: Colors.black),
+              selectedIconTheme: const IconThemeData(color: Colors.black, size: 40,),
               selectedItemColor: Colors.black,
               selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
               currentIndex: _selectedPageIndex,
