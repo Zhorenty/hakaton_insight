@@ -66,9 +66,3 @@ class NewsScreen extends StatelessWidget {
         ),
       );
 }
-
-void main() => runApp(
-      const MaterialApp(
-        home: NewsScreen(),
-      ),
-    );
