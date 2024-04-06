@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:sizzle_starter/src/feature/home/widget/home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -139,7 +140,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
-                    // Если форма валидна, выполняем вход или другую логику
+Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomePage()));
                   }
                 },
                 child: const Text(
