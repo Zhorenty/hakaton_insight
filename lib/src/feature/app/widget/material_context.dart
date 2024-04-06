@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sizzle_starter/src/core/constant/localization/localization.dart';
 import 'package:sizzle_starter/src/feature/home/widget/home_screen.dart';
+import 'package:sizzle_starter/src/feature/home/widget/map_screen.dart';
 import 'package:sizzle_starter/src/feature/settings/widget/settings_scope.dart';
 
 /// {@template material_context}
@@ -29,6 +30,7 @@ class MaterialContext extends StatelessWidget {
       supportedLocales: Localization.supportedLocales,
       locale: locale,
       home: const HomePage(),
+      // home: const MapScreen(),
       // TODO: You may want to override the default text scaling behavior.
       builder: (context, child) => MediaQuery.withClampedTextScaling(
         key: _globalKey,

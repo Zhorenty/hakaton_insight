@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:sizzle_starter/src/feature/home/widget/map_screen.dart';
 // import 'package:sizzle_starter/src/core/utils/layout/layout.dart';
 
-import '../../news/widget/news_screen.dart';
-import '../../settings/widget/settings_screen.dart';
+import 'package:sizzle_starter/src/feature/news/widget/news_screen.dart';
+import 'package:sizzle_starter/src/feature/settings/widget/settings_screen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -16,43 +17,41 @@ class _HomePageState extends State<HomePage> {
   final _pageController = PageController();
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(BuildContext context) => Scaffold(
         body: PageView(
           controller: _pageController,
           onPageChanged: (value) => setState(() {
             () => _selectedPageIndex = value;
           }),
-          children: [
+          children: const [
             NewsScreen(),
             MapScreen(),
             SettingsScreen(),
           ],
         ),
-        bottomNavigationBar: Container(
-          decoration: BoxDecoration(
+        bottomNavigationBar: DecoratedBox(
+          decoration: const BoxDecoration(
             borderRadius: BorderRadius.only(
-                topRight: Radius.circular(30), topLeft: Radius.circular(30)),
+                topRight: Radius.circular(30), topLeft: Radius.circular(30),),
             boxShadow: [
-              BoxShadow(color: Colors.black38, spreadRadius: 0, blurRadius: 10),
+              BoxShadow(color: Colors.black38, blurRadius: 10),
             ],
           ),
           child: ClipRRect(
-            borderRadius: BorderRadius.only(
+            borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(30.0),
               topRight: Radius.circular(30.0),
             ),
             child: BottomNavigationBar(
-
               selectedFontSize: 20,
               showSelectedLabels: false,
               showUnselectedLabels: false,
-              selectedIconTheme: IconThemeData(color: Colors.black),
+              selectedIconTheme: const IconThemeData(color: Colors.black),
               selectedItemColor: Colors.black,
-              selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
+              selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
               currentIndex: _selectedPageIndex,
               onTap: _openPage,
-              items: [
+              items: const [
                 BottomNavigationBarItem(
                   icon: Icon(Icons.newspaper),
                   label: 'News',
@@ -68,33 +67,15 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
-        ));
-  }
+        ),
+      );
 
   void _openPage(int index) {
     setState(() => _selectedPageIndex = index);
     _pageController.animateToPage(
       index,
-      duration: Duration(milliseconds: 300),
+      duration: const Duration(milliseconds: 300),
       curve: Curves.linear,
-    );
-  }
-}
-
-class MapScreen extends StatefulWidget {
-  const MapScreen({super.key});
-
-  @override
-  State<MapScreen> createState() => _MapScreenState();
-}
-
-class _MapScreenState extends State<MapScreen> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Text('Map'),
-      ),
     );
   }
 }
