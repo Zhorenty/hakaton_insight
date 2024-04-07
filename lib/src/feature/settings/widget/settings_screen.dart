@@ -8,12 +8,12 @@ class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          title: Text('Настройки'),
+          title: const Text('Настройки'),
         ),
         body: ListView(
           children: [
             ListTile(
-              title: Text(
+              title: const Text(
                 'Аккаунт',
                 style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
@@ -22,31 +22,31 @@ class SettingsScreen extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: Icon(Icons.account_circle),
-              title: Text('Профиль'),
-              trailing: Icon(Icons.arrow_forward_ios),
+              leading: const Icon(Icons.account_circle),
+              title: const Text('Профиль'),
+              trailing: const Icon(Icons.arrow_forward_ios),
               onTap: () {
                 // Действие при нажатии
               },
             ),
             ListTile(
-              leading: Icon(Icons.lock),
-              title: Text('Пароль'),
-              trailing: Icon(Icons.arrow_forward_ios),
+              leading: const Icon(Icons.lock),
+              title: const Text('Пароль'),
+              trailing: const Icon(Icons.arrow_forward_ios),
               onTap: () {
                 // Действие при нажатии
               },
             ),
             ListTile(
-              leading: Icon(Icons.notifications),
-              title: Text('Уведомления'),
-              trailing: Icon(Icons.arrow_forward_ios),
+              leading: const Icon(Icons.notifications),
+              title: const Text('Уведомления'),
+              trailing: const Icon(Icons.arrow_forward_ios),
               onTap: () {
                 // Действие при нажатии
               },
             ),
             ListTile(
-              title: Text(
+              title: const Text(
                 'Еще',
                 style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
@@ -55,34 +55,37 @@ class SettingsScreen extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: Icon(Icons.star),
-              title: Text('Тема'),
-              trailing: Icon(Icons.arrow_forward_ios),
+              leading: const Icon(Icons.star),
+              title: const Text('Тема'),
+              trailing: const Icon(Icons.arrow_forward_ios),
               onTap: () {
                 // Действие при нажатии
               },
             ),
             ListTile(
-              leading: Icon(Icons.help),
-              title: Text('Помощь'),
-              trailing: Icon(Icons.arrow_forward_ios),
+              leading: const Icon(Icons.help),
+              title: const Text('Помощь'),
+              trailing: const Icon(Icons.arrow_forward_ios),
               onTap: () {
                 // Действие при нажатии
               },
             ),
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 16.0),
+              padding: const EdgeInsets.symmetric(vertical: 16.0),
               child: TextButton(
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => LoginScreen()),
+                    // ignore: inference_failure_on_instance_creation
+                    MaterialPageRoute(
+                      builder: (context) => const LoginScreen(),
+                    ),
                   );
                 },
                 style: TextButton.styleFrom(
                   foregroundColor: Colors.red, // Text Color
                 ),
-                child: Text(
+                child: const Text(
                   'Выйти из аккаунта',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,

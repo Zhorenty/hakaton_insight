@@ -73,13 +73,13 @@ class _MapScreenState extends State<MapScreen> {
                   FloatingActionButton(
                     backgroundColor: Colors.white,
                     onPressed: () => _changeZoom(delta: 1),
-                    child: Icon(Icons.add),
+                    child: const Icon(Icons.add),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   FloatingActionButton(
                     backgroundColor: Colors.white,
                     onPressed: () => _changeZoom(delta: -1),
-                    child: Icon(Icons.remove),
+                    child: const Icon(Icons.remove),
                   ),
                 ],
               ),
@@ -88,11 +88,11 @@ class _MapScreenState extends State<MapScreen> {
         ),
       );
 
-  void _changeZoom({required double delta}) async {
+  Future<void> _changeZoom({required double delta}) async {
     final newZoom = _mapZoom + delta;
     await _mapController.moveCamera(
       CameraUpdate.zoomTo(newZoom),
-      animation: const MapAnimation(type: MapAnimationType.smooth, duration: 1.0),
+      animation: const MapAnimation(duration: 1.0),
     );
   }
 
@@ -101,37 +101,37 @@ class _MapScreenState extends State<MapScreen> {
     required List<PlacemarkMapObject> placemarks,
   }) =>
       ClusterizedPlacemarkCollection(
-          mapId: const MapObjectId('clusterized-1'),
-          placemarks: placemarks,
-          radius: 50,
-          minZoom: 15,
-          onClusterAdded: (self, cluster) async => cluster.copyWith(
-                appearance: cluster.appearance.copyWith(
-                  opacity: 1.0,
-                  icon: PlacemarkIcon.single(
-                    PlacemarkIconStyle(
-                      image: BitmapDescriptor.fromBytes(
-                        await ClusterIconPainter(cluster.size)
-                            .getClusterIconBytes(),
-                      ),
-                    ),
-                  ),
+        mapId: const MapObjectId('clusterized-1'),
+        placemarks: placemarks,
+        radius: 50,
+        minZoom: 15,
+        onClusterAdded: (self, cluster) async => cluster.copyWith(
+          appearance: cluster.appearance.copyWith(
+            opacity: 1.0,
+            icon: PlacemarkIcon.single(
+              PlacemarkIconStyle(
+                image: BitmapDescriptor.fromBytes(
+                  await ClusterIconPainter(cluster.size).getClusterIconBytes(),
                 ),
               ),
-          onClusterTap: (self, cluster) async {
-            await _mapController.moveCamera(
-              animation: const MapAnimation(
-                type: MapAnimationType.linear,
-                duration: 0.3,
+            ),
+          ),
+        ),
+        onClusterTap: (self, cluster) async {
+          await _mapController.moveCamera(
+            animation: const MapAnimation(
+              type: MapAnimationType.linear,
+              duration: 0.3,
+            ),
+            CameraUpdate.newCameraPosition(
+              CameraPosition(
+                target: cluster.placemarks.first.point,
+                zoom: _mapZoom + 1,
               ),
-              CameraUpdate.newCameraPosition(
-                CameraPosition(
-                  target: cluster.placemarks.first.point,
-                  zoom: _mapZoom + 1,
-                ),
-              ),
-            );
-          });
+            ),
+          );
+        },
+      );
 
   /// Метод, который включает слой местоположения пользователя на карте
   /// Выполняется проверка на доступ к местоположению, в случае отсутствия
@@ -179,6 +179,7 @@ List<PlacemarkMapObject> _getPlacemarkObjects(BuildContext context) =>
                 scale: 2,
               ),
             ),
+            // ignore: inference_failure_on_function_invocation
             onTap: (_, __) => showModalBottomSheet(
               context: context,
               builder: (context) => _ModalBodyView(
