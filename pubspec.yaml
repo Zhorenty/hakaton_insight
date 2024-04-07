@@ -57,6 +57,7 @@ dependencies:
   yandex_mapkit: ^4.0.1
   geolocator: ^11.0.0
   permission_handler: ^11.3.1
+  cupertino_icons: ^1.0.6
   
 dev_dependencies:
   # Testing
@@ -84,7 +85,7 @@ flutter:
 
   assets:
     # Add assets from the images directory to the application.
-    - assets/images/
+    - assets/images/abrau.jpg
 
 flutter_gen:
   output: lib/src/core/constant/generated
